@@ -6,7 +6,7 @@
 
 class IterateRecurse {
   public static void main(String[] args) {
-
+    
     //Problem 1 Tests
     morn_aft_eve("Alex", 3);
     morn_aft_eve("Peter", 1);
@@ -16,22 +16,20 @@ class IterateRecurse {
     System.out.println(sum_div3_for(1,10));
 
     // Problem 3 Tests
-    System.out.println(sum_div3_for(1,10));
-    System.out.println(sum_div3_for(1,15));
+    System.out.println(sum_odd_while(1,10));
+    System.out.println(sum_odd_while(1,15));
 
     // Problem 4 Tests
-    System.out.println(count_x("Hi Hello Hey HannaH", 'H'));
-    System.out.println(count_x("Awesome Android Dog Apple", 'A'));
+    System.out.println(count_x("hi hello hey hannah", 'h'));
+    System.out.println(count_x("awesome android Dog apple", 'a'));
 
     //Problem 5 Tests
     System.out.println(pattern_AB("xz", "zz", 2));
     System.out.println(pattern_AB("ui", "ay", 3));
 
     // Problem 6 Tests
-    System.out.println(mult_pos(-5, 6));
-    System.out.println(mult_pos(-5, -6));
     System.out.println(mult_pos(0, 10));
-    System.out.println(mult_pos(13, 2));
+    System.out.println(mult_pos(13, 10));
     System.out.println(mult_pos(12, 0));
   }
 
@@ -63,8 +61,8 @@ class IterateRecurse {
     while (i <= d) {
       if (i%2 == 1) {
         sum = sum + i;
-        i++;
       }
+      i++;
     }
     return sum;
   }
@@ -90,31 +88,17 @@ class IterateRecurse {
   }
 
   public static int mult_pos(int x, int y) { //Problem 6
-    int sum = 0;
-    int repeat = 0;
-    if (y > 0) {
-      repeat = y;
+    if (y == 1) {
+      return x;
     }
-    else if (y < 0) {
-      repeat = y - y - y;
+    else if (x == 0) {
+      return 0;
     }
-    else if ( (x == 0) || (y == 0)) {
-      repeat = 0;
+    else if (y == 0) {
+      return 0;
     }
-    for (int i = 0; i < repeat; i++) {
-      if ( (x > 0) && (y > 0) ) {
-        sum = sum + x;
-      }
-      else if ( (x < 0) && (y > 0) ) {
-        sum = sum + x;
-      }
-      else if ( (x < 0) && (y < 0) ) {
-          sum = sum + (x - x - x);
-      }
-      else if ( (x > 0) && (y < 0) ) {
-          sum = sum - x;
-      }
-      }
-    return sum;
+    else {
+      return (x + mult_pos(x, y - 1));
+    }
   }
 }
